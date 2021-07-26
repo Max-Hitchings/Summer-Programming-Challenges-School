@@ -1,6 +1,6 @@
 // import "./TreasureHunt.css";
 import { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 export default function TreasureHunt() {
@@ -8,6 +8,8 @@ export default function TreasureHunt() {
     Math.round(Math.random() * 10),
     Math.round(Math.random() * 10),
   ]);
+  const [Guesses, setGuesses] = useState([[100, 100]]);
+  const [GuessesCount, setGuessesCount] = useState(0);
   const classes = useStyles();
 
   const NewGold = () => {
@@ -15,6 +17,19 @@ export default function TreasureHunt() {
   };
 
   const CheckForGold = (row, column) => {
+    let InGuesses = false;
+    var x;
+    for (x = 0; x < Guesses.length; x++) {
+      if (Guesses[x][0] === row && Guesses[x][1] === column) {
+        InGuesses = true;
+      }
+    }
+
+    if (!InGuesses) {
+      setGuesses([...Guesses, [row, column]]);
+      setGuessesCount(GuessesCount + 1);
+    }
+
     if (Gold[0] === row && Gold[1] === column) {
       document.getElementById(`row-${row},column-${column}`).className = `${
         document.getElementById(`row-${row},column-${column}`).className
@@ -58,7 +73,10 @@ export default function TreasureHunt() {
     <>
       <div className={classes.TreasureHunt}>
         <div className={classes.BoardContainer}>{BoardGen()}</div>
-        <div className={classes.BoardControls}>TEST</div>
+        <div className={classes.BoardControls}>
+          <div className={classes.GuessesCounter}>Guesses: {GuessesCount}</div>
+          <Button>RESET</Button>
+        </div>
       </div>
       <div className={classes.BoardControls}>hi</div>
     </>
@@ -95,5 +113,12 @@ const useStyles = makeStyles({
     alignSelf: "center",
     marginLeft: "50px",
     marginRight: "auto",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+  },
+  GuessesCounter: {
+    marginBottom: "10px",
   },
 });
