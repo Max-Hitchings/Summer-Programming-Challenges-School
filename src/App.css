@@ -18,3 +18,10 @@
   height: 200px;
   width: 200px;
 }
+
+.Board-Item-Incorect {
+  background-color: red;
+}
+.Board-Item-Corect {
+  background-color: green;
+}
