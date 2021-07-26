@@ -8,12 +8,25 @@ export default function TreasureHunt() {
     Math.round(Math.random() * 10),
     Math.round(Math.random() * 10),
   ]);
-  const [Guesses, setGuesses] = useState([[100, 100]]);
+  const [Guesses, setGuesses] = useState([]);
   const [GuessesCount, setGuessesCount] = useState(0);
   const classes = useStyles();
 
   const NewGold = () => {
     SetGold([Math.round(Math.random() * 10), Math.round(Math.random() * 10)]);
+  };
+
+  const ResetHandler = () => {
+    console.log("shush");
+    SetGold([Math.round(Math.random() * 10), Math.round(Math.random() * 10)]);
+    setGuesses([]);
+    setGuessesCount(0);
+
+    const BoardItems = document.getElementsByClassName(classes.BoardItem);
+    for (var i = 0; i < BoardItems.length; i++) {
+      BoardItems[i].classList.remove("Board-Item-Incorect");
+      BoardItems[i].classList.remove("Board-Item-Corect");
+    }
   };
 
   const CheckForGold = (row, column) => {
@@ -31,13 +44,15 @@ export default function TreasureHunt() {
     }
 
     if (Gold[0] === row && Gold[1] === column) {
-      document.getElementById(`row-${row},column-${column}`).className = `${
-        document.getElementById(`row-${row},column-${column}`).className
-      } Board-Item-Corect`;
+      document
+        .getElementById(`row-${row},column-${column}`)
+        .classList.add("Board-Item-Corect");
     } else {
-      document.getElementById(`row-${row},column-${column}`).className = `${
-        document.getElementById(`row-${row},column-${column}`).className
-      } Board-Item-Incorect`;
+      console.log(
+        document
+          .getElementById(`row-${row},column-${column}`)
+          .classList.add("Board-Item-Incorect")
+      );
     }
   };
 
@@ -72,10 +87,18 @@ export default function TreasureHunt() {
   return (
     <>
       <div className={classes.TreasureHunt}>
-        <div className={classes.BoardContainer}>{BoardGen()}</div>
+        <div className={classes.BoardContainer} id="BoardContainer">
+          {BoardGen()}
+        </div>
         <div className={classes.BoardControls}>
           <div className={classes.GuessesCounter}>Guesses: {GuessesCount}</div>
-          <Button>RESET</Button>
+          <Button
+            onClick={() => {
+              ResetHandler();
+            }}
+          >
+            RESET
+          </Button>
         </div>
       </div>
       <div className={classes.BoardControls}>hi</div>
@@ -107,11 +130,15 @@ const useStyles = makeStyles({
     border: "1px solid",
   },
   BoardControls: {
-    width: "150px",
-    height: "150px",
-    backgroundColor: "orange",
+    width: "100px",
+    height: "500px",
+    // background:
+    //   "radial-gradient(circle, rgba(62,103,228,1) 0%, rgba(58,139,139,1) 100%)",
+    // background: "red",
+    // borderRadius: "75px",
+    border: "1px solid",
     alignSelf: "center",
-    marginLeft: "50px",
+    marginLeft: "10px",
     marginRight: "auto",
     display: "flex",
     alignItems: "center",
