@@ -5,22 +5,25 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default function TreasureHunt() {
   const [Gold, SetGold] = useState([
-    Math.round(Math.random() * 10),
-    Math.round(Math.random() * 10),
+    Math.round(Math.random() * 9),
+    Math.round(Math.random() * 9),
   ]);
   const [Guesses, setGuesses] = useState([]);
   const [GuessesCount, setGuessesCount] = useState(0);
+  const [TreasureFound, setTreasureFound] = useState(false);
+
   const classes = useStyles();
 
   const NewGold = () => {
-    SetGold([Math.round(Math.random() * 10), Math.round(Math.random() * 10)]);
+    SetGold([Math.round(Math.random() * 9), Math.round(Math.random() * 9)]);
   };
 
   const ResetHandler = () => {
     console.log("shush");
-    SetGold([Math.round(Math.random() * 10), Math.round(Math.random() * 10)]);
+    SetGold([Math.round(Math.random() * 9), Math.round(Math.random() * 9)]);
     setGuesses([]);
     setGuessesCount(0);
+    setTreasureFound(false);
 
     const BoardItems = document.getElementsByClassName(classes.BoardItem);
     for (var i = 0; i < BoardItems.length; i++) {
@@ -30,29 +33,32 @@ export default function TreasureHunt() {
   };
 
   const CheckForGold = (row, column) => {
-    let InGuesses = false;
-    var x;
-    for (x = 0; x < Guesses.length; x++) {
-      if (Guesses[x][0] === row && Guesses[x][1] === column) {
-        InGuesses = true;
+    if (!TreasureFound) {
+      let BeenGuessed = false;
+      var x;
+      for (x = 0; x < Guesses.length; x++) {
+        if (Guesses[x][0] === row && Guesses[x][1] === column) {
+          BeenGuessed = true;
+        }
       }
-    }
 
-    if (!InGuesses) {
-      setGuesses([...Guesses, [row, column]]);
-      setGuessesCount(GuessesCount + 1);
-    }
+      if (!BeenGuessed) {
+        setGuesses([...Guesses, [row, column]]);
+        setGuessesCount(GuessesCount + 1);
+      }
 
-    if (Gold[0] === row && Gold[1] === column) {
-      document
-        .getElementById(`row-${row},column-${column}`)
-        .classList.add("Board-Item-Corect");
-    } else {
-      console.log(
+      if (Gold[0] === row && Gold[1] === column) {
         document
           .getElementById(`row-${row},column-${column}`)
-          .classList.add("Board-Item-Incorect")
-      );
+          .classList.add("Board-Item-Corect");
+        setTreasureFound(true);
+      } else {
+        console.log(
+          document
+            .getElementById(`row-${row},column-${column}`)
+            .classList.add("Board-Item-Incorect")
+        );
+      }
     }
   };
 
