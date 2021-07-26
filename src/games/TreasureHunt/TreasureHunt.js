@@ -87,6 +87,9 @@ export default function TreasureHunt() {
   return (
     <>
       <div className={classes.TreasureHunt}>
+        <Button className={classes.BackButton} variant="contained" href="/">
+          BACK
+        </Button>
         <div className={classes.BoardContainer} id="BoardContainer">
           {BoardGen()}
         </div>
@@ -132,10 +135,6 @@ const useStyles = makeStyles({
   BoardControls: {
     width: "100px",
     height: "500px",
-    // background:
-    //   "radial-gradient(circle, rgba(62,103,228,1) 0%, rgba(58,139,139,1) 100%)",
-    // background: "red",
-    // borderRadius: "75px",
     border: "1px solid",
     alignSelf: "center",
     marginLeft: "10px",
@@ -147,5 +146,11 @@ const useStyles = makeStyles({
   },
   GuessesCounter: {
     marginBottom: "10px",
+  },
+  BackButton: {
+    position: "fixed",
+    margin: "15px",
+    backgroundColor: "rgb(0, 183, 255)",
+    fontWeight: "1000",
   },
 });
