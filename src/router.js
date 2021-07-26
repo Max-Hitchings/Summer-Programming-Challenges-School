@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import TreasureHunt from "./games/TreasureHunt";
+import TreasureHunt from "./games/TreasureHunt/TreasureHunt";
 
 export default function AppRoutes() {
   return (

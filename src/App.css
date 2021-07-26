@@ -18,31 +18,3 @@
   height: 200px;
   width: 200px;
 }
-
-.Treasure-Hunt {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(58, 139, 139);
-  position: absolute;
-  display: flex;
-}
-
-.Board-Container {
-  width: 500px;
-  height: 500px;
-  align-self: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.Board-Row {
-  height: 10%;
-  width: 10%;
-}
-
-.Board-Item {
-  margin: 10px;
-  width: 10%;
-  height: 100%;
-  border: 1px solid;
-}
