@@ -13,12 +13,6 @@
   color: white;
 }
 
-.Main-menu-item {
-  background-color: red;
-  height: 200px;
-  width: 200px;
-}
-
 .Board-Item-Incorect {
   background-color: red;
 }
