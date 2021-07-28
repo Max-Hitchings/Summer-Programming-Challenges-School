@@ -1,4 +1,15 @@
+html {
+  background: url(https://images-ext-2.discordapp.net/external/m-81TeIERTvN6QjCAsC3dFJyVPNat5u1VeHR1ASML6g/https/media.discordapp.net/attachments/630139747481812993/869038299442982952/ezgif.com-gif-maker_1.gif)
+    no-repeat center center fixed;
+  background-size: cover;
+}
 body {
   margin: 0;
   font-family: "Segoe UI", "Roboto";
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100%;
+  min-width: 100%;
 }
