@@ -1,10 +1,12 @@
-import "./App.css";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 
 export default function Dashboard() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className={classes.App}>
+      <header className={classes.AppHeader}>
         <p>Summer coding challenges</p>
         <div>
           <button>
@@ -18,3 +20,19 @@ export default function Dashboard() {
     </div>
   );
 }
+
+const useStyles = makeStyles({
+  App: {
+    textAlign: "center",
+  },
+  AppHeader: {
+    backgroundColor: "#282c34",
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "calc(10px + 2vmin)",
+    color: "white",
+  },
+});

@@ -15,10 +15,6 @@ export default function TreasureHunt() {
 
   const classes = useStyles();
 
-  const NewGold = () => {
-    SetGold([Math.round(Math.random() * 9), Math.round(Math.random() * 9)]);
-  };
-
   const ResetHandler = () => {
     console.log("shush");
     SetGold([Math.round(Math.random() * 9), Math.round(Math.random() * 9)]);
@@ -51,13 +47,13 @@ export default function TreasureHunt() {
       if (Gold[0] === row && Gold[1] === column) {
         document
           .getElementById(`row-${row},column-${column}`)
-          .classList.add("Board-Item-Corect");
+          .classList.add(classes.BoardItemCorect);
         setTreasureFound(true);
       } else {
         console.log(
           document
             .getElementById(`row-${row},column-${column}`)
-            .classList.add("Board-Item-Incorect")
+            .classList.add(classes.BoardItemIncorect)
         );
       }
     }
@@ -139,6 +135,8 @@ const useStyles = makeStyles({
     height: "100%",
     border: "1px solid",
   },
+  BoardItemIncorect: { backgroundColor: "red" },
+  BoardItemCorect: { backgroundColor: "green" },
   BoardControls: {
     width: "100px",
     height: "500px",
