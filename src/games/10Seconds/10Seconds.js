@@ -8,11 +8,9 @@ import "../../util/Loading.css";
 export default function Guess10Seconds() {
   const classes = useStyles();
 
-  const [GuessTime, setGuessTime] = useState(0);
   const [GameStarted, setGameStarted] = useState(false);
   const [StartTime, setStartTime] = useState(0);
   const [TimeTaken, setTimeTaken] = useState(0);
-  const [LoadingText, setLoadingText] = useState(".");
 
   const startGame = () => {
     setStartTime(new Date());
