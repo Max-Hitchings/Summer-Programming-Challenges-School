@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+
 import Dashboard from "./Dashboard";
 import TreasureHunt from "./games/TreasureHunt/TreasureHunt";
 import Guess10Seconds from "./games/10Seconds/10Seconds";
-import { makeStyles } from "@material-ui/core/styles";
+import RockPaperScissors from "./games/RockPaperScissors/RockPaperScissors";
 
 export default function AppRoutes() {
   const classes = useStyles();
@@ -16,6 +18,11 @@ export default function AppRoutes() {
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/treasure-hunt" component={TreasureHunt} />
         <Route exact path="/10-seconds" component={Guess10Seconds} />
+        <Route
+          exact
+          path="/rock-paper-scissors"
+          component={RockPaperScissors}
+        />
       </Switch>
     </Router>
   );
