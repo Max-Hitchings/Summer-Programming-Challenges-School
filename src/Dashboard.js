@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import ChallengeLink from "./util/ChallengeLink";
 
 export default function Dashboard() {
   const classes = useStyles();
@@ -9,15 +9,19 @@ export default function Dashboard() {
       <header className={classes.AppHeader}>
         <p>Summer coding challenges</p>
         <div>
-          <button>
-            <Link to="/treasure-hunt">treasure-hunt</Link>
-          </button>
-          <button>
-            <Link to="/10-seconds">guess 10 seconds</Link>
-          </button>
-          <button>
-            <a href="https://www.cipher.max-hitchings.com/">ceaser cipher</a>
-          </button>
+          <ChallengeLink href="/treasure-hunt" ChallengeName="treasure hunt" />
+
+          <ChallengeLink href="/10-seconds" ChallengeName="guess 10 seconds" />
+
+          <ChallengeLink
+            href="/rock-paper-scissors"
+            ChallengeName="rock paper scissors"
+          />
+
+          <ChallengeLink
+            href="https://www.cipher.max-hitchings.com/"
+            ChallengeName="ceaser cipher"
+          />
         </div>
       </header>
     </div>
