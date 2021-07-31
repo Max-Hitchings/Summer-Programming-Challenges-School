@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import BackButton from "../../util/BackButton";
 
 export default function TreasureHunt() {
   const [Gold, SetGold] = useState([
@@ -92,10 +93,10 @@ export default function TreasureHunt() {
 
   return (
     <>
+      <BackButton />
       <div className={classes.TreasureHunt}>
-        <Button className={classes.BackButton} variant="contained" href="/">
-          BACK
-        </Button>
+        {/* <BackButton /> */}
+
         <div className={classes.BoardContainer} id="BoardContainer">
           {BoardGen()}
         </div>
@@ -152,11 +153,5 @@ const useStyles = makeStyles({
   },
   GuessesCounter: {
     marginBottom: "10px",
-  },
-  BackButton: {
-    position: "fixed",
-    margin: "15px",
-    backgroundColor: "rgb(0, 183, 255)",
-    fontWeight: "1000",
   },
 });
