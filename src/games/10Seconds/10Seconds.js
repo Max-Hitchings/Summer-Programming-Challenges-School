@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import BackButton from "../../util/BackButton";
+import "../../util/Loading.css";
 
 export default function Guess10Seconds() {
   const classes = useStyles();
@@ -11,6 +12,7 @@ export default function Guess10Seconds() {
   const [GameStarted, setGameStarted] = useState(false);
   const [StartTime, setStartTime] = useState(0);
   const [TimeTaken, setTimeTaken] = useState(0);
+  const [LoadingText, setLoadingText] = useState(".");
 
   const startGame = () => {
     setStartTime(new Date());
@@ -27,26 +29,34 @@ export default function Guess10Seconds() {
       <BackButton />
       <div className={classes.root}>
         {GameStarted ? (
-          <Button
-            variant="contained"
-            onClick={() => {
-              endGame();
-            }}
-          >
-            END GAME
-          </Button>
+          <>
+            <Button
+              variant="contained"
+              onClick={() => {
+                endGame();
+              }}
+            >
+              END GAME
+            </Button>
+            <div>
+              <div className="loading">...</div>
+            </div>
+          </>
         ) : (
-          <Button
-            variant="contained"
-            onClick={() => {
-              startGame();
-            }}
-          >
-            START GAME
-          </Button>
+          <>
+            <Button
+              variant="contained"
+              onClick={() => {
+                startGame();
+              }}
+            >
+              START GAME
+            </Button>
+            {TimeTaken !== 0 ? (
+              <div>Your time was {TimeTaken / 1000} seconds</div>
+            ) : null}
+          </>
         )}
-
-        <div>Your time is {TimeTaken / 1000} seconds</div>
       </div>
     </>
   );
@@ -62,5 +72,8 @@ const useStyles = makeStyles({
     alignItems: "center",
     fontWeight: "bolder",
     fontSize: "30px",
+  },
+  loading: {
+    display: "inline-block",
   },
 });
