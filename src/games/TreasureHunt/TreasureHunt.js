@@ -24,8 +24,8 @@ export default function TreasureHunt() {
 
     const BoardItems = document.getElementsByClassName(classes.BoardItem);
     for (var i = 0; i < BoardItems.length; i++) {
-      BoardItems[i].classList.remove("Board-Item-Incorect");
-      BoardItems[i].classList.remove("Board-Item-Corect");
+      BoardItems[i].classList.remove(classes.BoardItemIncorect);
+      BoardItems[i].classList.remove(classes.BoardItemCorect);
     }
   };
 
