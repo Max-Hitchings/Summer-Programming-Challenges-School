@@ -15,6 +15,9 @@ export default function Dashboard() {
           <button>
             <Link to="/10-seconds">guess 10 seconds</Link>
           </button>
+          <button>
+            <a href="https://www.cipher.max-hitchings.com/">ceaser cipher</a>
+          </button>
         </div>
       </header>
     </div>
