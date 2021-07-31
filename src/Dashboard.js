@@ -6,9 +6,14 @@ export default function Dashboard() {
     <div className="App">
       <header className="App-header">
         <p>Summer coding challenges</p>
-        <button>
-          <Link to="/treasure-hunt">treasure-hunt</Link>
-        </button>
+        <div>
+          <button>
+            <Link to="/treasure-hunt">treasure-hunt</Link>
+          </button>
+          <button>
+            <Link to="/10-seconds">guess 10 seconds</Link>
+          </button>
+        </div>
       </header>
     </div>
   );
