@@ -1,9 +1,12 @@
-import React from "react";
+import BackButton from "../../util/BackButton";
 
 export default function RockPaperScissors() {
   return (
-    <div>
-      <div></div>
-    </div>
+    <>
+      <BackButton />
+      <div>
+        <div></div>
+      </div>
+    </>
   );
 }

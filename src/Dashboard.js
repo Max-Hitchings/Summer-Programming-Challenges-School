@@ -9,7 +9,11 @@ export default function Dashboard() {
       <header className={classes.AppHeader}>
         <p>Summer coding challenges</p>
         <div>
-          <ChallengeLink href="/treasure-hunt" ChallengeName="treasure hunt" />
+          <ChallengeLink
+            href="/treasure-hunt"
+            ChallengeName="treasure hunt"
+            target="_blank"
+          />
 
           <ChallengeLink href="/10-seconds" ChallengeName="guess 10 seconds" />
 

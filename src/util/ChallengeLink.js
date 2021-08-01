@@ -1,14 +1,23 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 
-export default function ChallengeLink({ href = "", ChallengeName = "" }) {
+export default function ChallengeLink({
+  href = "",
+  ChallengeName = "",
+  ...props
+}) {
   const classes = useStyles();
 
   return (
-    <Button className={classes.Link} variant="outlined">
-      <a className={classes.a} href={href}>
-        {ChallengeName}
-      </a>
+    <Button
+      className={classes.Link}
+      variant="outlined"
+      onClick={() => {
+        window.location.href = href;
+      }}
+      {...props}
+    >
+      {ChallengeName}
     </Button>
   );
 }

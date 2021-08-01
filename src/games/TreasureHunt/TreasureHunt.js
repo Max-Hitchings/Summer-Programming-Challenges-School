@@ -16,7 +16,6 @@ export default function TreasureHunt() {
   const classes = useStyles();
 
   const ResetHandler = () => {
-    console.log("shush");
     SetGold([Math.round(Math.random() * 9), Math.round(Math.random() * 9)]);
     setGuesses([]);
     setGuessesCount(0);
