@@ -1,5 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { Button } from "@material-ui/core";
+
 import ChallengeLink from "./util/ChallengeLink";
+import * as Challenges from "./util/ChallengeMetaData.json";
 
 export default function Dashboard() {
   const classes = useStyles();
@@ -10,9 +13,8 @@ export default function Dashboard() {
         <p>Summer coding challenges</p>
         <div>
           <ChallengeLink
-            href="/treasure-hunt"
-            ChallengeName="treasure hunt"
-            target="_blank"
+            href={Challenges.TreasureHunt.href}
+            ChallengeName={Challenges.TreasureHunt.ChallengeName}
           />
 
           <ChallengeLink href="/10-seconds" ChallengeName="guess 10 seconds" />
@@ -26,6 +28,7 @@ export default function Dashboard() {
             href="https://www.cipher.max-hitchings.com/"
             ChallengeName="ceaser cipher"
           />
+          <Button variant="contained">Hello</Button>
         </div>
       </header>
     </div>

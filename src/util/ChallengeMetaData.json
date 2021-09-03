@@ -1,0 +1,10 @@
+{
+  "TreasureHunt": {
+    "href": "/treasure-hunt",
+    "ChallengeName": "treasure hunt",
+    "GRID_SIZE": 10
+  },
+  "10Seconds": {},
+  "RockPaperScissors": {},
+  "CeaserCipher": {}
+}

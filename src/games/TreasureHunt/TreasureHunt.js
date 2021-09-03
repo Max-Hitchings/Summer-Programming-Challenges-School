@@ -1,13 +1,16 @@
-// import "./TreasureHunt.css";
 import { useState } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
 import BackButton from "../../util/BackButton";
+import * as ChallangeData from "../../util/ChallengeMetaData.json";
 
 export default function TreasureHunt() {
+  const GRID_SIZE = ChallangeData.TreasureHunt.GRID_SIZE;
+
   const [Gold, SetGold] = useState([
-    Math.round(Math.random() * 9),
-    Math.round(Math.random() * 9),
+    Math.round(Math.random() * GRID_SIZE - 1),
+    Math.round(Math.random() * GRID_SIZE - 1),
   ]);
   const [Guesses, setGuesses] = useState([]);
   const [GuessesCount, setGuessesCount] = useState(0);
@@ -16,7 +19,10 @@ export default function TreasureHunt() {
   const classes = useStyles();
 
   const ResetHandler = () => {
-    SetGold([Math.round(Math.random() * 9), Math.round(Math.random() * 9)]);
+    SetGold([
+      Math.round(Math.random() * GRID_SIZE - 1),
+      Math.round(Math.random() * GRID_SIZE - 1),
+    ]);
     setGuesses([]);
     setGuessesCount(0);
     setTreasureFound(false);
@@ -60,7 +66,7 @@ export default function TreasureHunt() {
 
   const ColumnGen = (row) => {
     let Columns = [];
-    for (let column = 0; column < 10; column++) {
+    for (let column = 0; column < GRID_SIZE; column++) {
       Columns.push(
         <Grid
           item
@@ -76,7 +82,7 @@ export default function TreasureHunt() {
 
   const BoardGen = () => {
     let Board = [];
-    for (let row = 0; row < 10; row++) {
+    for (let row = 0; row < GRID_SIZE; row++) {
       Board.push([
         <Grid className={classes.BoardRow} key={`row-${row}`} container>
           {ColumnGen(row)}
