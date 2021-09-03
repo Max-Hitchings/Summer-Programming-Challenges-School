@@ -28,7 +28,6 @@ export default function Dashboard() {
             href="https://www.cipher.max-hitchings.com/"
             ChallengeName="ceaser cipher"
           />
-          <Button variant="contained">Hello</Button>
         </div>
       </header>
     </div>
