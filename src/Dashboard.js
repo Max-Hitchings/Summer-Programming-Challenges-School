@@ -10,7 +10,7 @@ export default function Dashboard() {
   return (
     <div className={classes.App}>
       <header className={classes.AppHeader}>
-        <p>Summer coding challenges</p>
+        <p>Summer Coding Challenges</p>
         <div>
           <ChallengeLink
             href={Challenges.TreasureHunt.href}
