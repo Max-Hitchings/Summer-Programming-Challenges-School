@@ -3,20 +3,28 @@ import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import BackButton from "../../util/BackButton";
 
+import RockImg from "../../pics/Rock.png";
+import PaperImg from "../../pics/Paper.png";
+import ScissorsImg from "../../pics/Scissors.png";
+
 export default function RockPaperScissors() {
   var ComputerPick = "Rock";
   var UserPick = "Rock";
   const [GameResult, SetGameResult] = useState("not started");
+  const [ComputerPickState, SetComputerPickState] = useState("");
   const classes = useStyles();
 
   const UpdateComputer = async () => {
     const rand = Math.floor(Math.random() * 3);
     if (rand === 0) {
       ComputerPick = "Rock";
+      await SetComputerPickState("Rock");
     } else if (rand === 1) {
       ComputerPick = "Paper";
+      await SetComputerPickState("Paper");
     } else if (rand === 2) {
       ComputerPick = "Scissors";
+      await SetComputerPickState("Scissors");
     }
 
     // switch (Math.floor(Math.random() * 3)) {
@@ -66,8 +74,8 @@ export default function RockPaperScissors() {
 
   return (
     <>
+      <BackButton />
       <div className={classes.Container}>
-        <BackButton />
         <div className={classes.Game}>
           <Button
             onClick={() => {
@@ -90,7 +98,19 @@ export default function RockPaperScissors() {
           >
             Scissors
           </Button>
-          {GameResult}
+          <div className={classes.Results}>{GameResult}</div>
+          {GameResult !== "not started" ? (
+            <div className={classes.Results}>
+              Computer:{" "}
+              {ComputerPickState === "Rock" ? (
+                <img src={RockImg} height={125} />
+              ) : ComputerPickState === "Paper" ? (
+                <img src={PaperImg} height={125} />
+              ) : ComputerPickState === "Scissors" ? (
+                <img src={ScissorsImg} height={125} />
+              ) : null}
+            </div>
+          ) : null}
         </div>
       </div>
     </>
@@ -98,6 +118,18 @@ export default function RockPaperScissors() {
 }
 
 const useStyles = makeStyles({
-  Container: { height: "100vh", width: "100vw" },
-  Game: { margin: "50px" },
+  Container: {
+    height: "100vh",
+    backgroundColor: "rgb(58, 139, 139)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  Results: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "bold",
+  },
 });

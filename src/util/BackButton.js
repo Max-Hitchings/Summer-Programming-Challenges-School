@@ -14,7 +14,7 @@ export default function BackButton() {
 
 const useStyles = makeStyles({
   BackButton: {
-    position: "static",
+    position: "fixed",
     margin: "15px",
     backgroundColor: "rgb(0, 183, 255)",
     fontWeight: "1000",
