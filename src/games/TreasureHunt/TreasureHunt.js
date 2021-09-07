@@ -20,8 +20,8 @@ export default function TreasureHunt() {
 
   const ResetHandler = () => {
     SetGold([
-      Math.round(Math.random() * GRID_SIZE - 1),
-      Math.round(Math.random() * GRID_SIZE - 1),
+      Math.round(Math.random() * (GRID_SIZE - 1)),
+      Math.round(Math.random() * (GRID_SIZE - 1)),
     ]);
     setGuesses([]);
     setGuessesCount(0);
@@ -55,11 +55,9 @@ export default function TreasureHunt() {
           .classList.add(classes.BoardItemCorect);
         setTreasureFound(true);
       } else {
-        console.log(
-          document
-            .getElementById(`row-${row},column-${column}`)
-            .classList.add(classes.BoardItemIncorect)
-        );
+        document
+          .getElementById(`row-${row},column-${column}`)
+          .classList.add(classes.BoardItemIncorect);
       }
     }
   };
