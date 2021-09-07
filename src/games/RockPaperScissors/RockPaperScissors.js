@@ -10,7 +10,7 @@ import ScissorsImg from "../../pics/Scissors.png";
 export default function RockPaperScissors() {
   var ComputerPick = "Rock";
   var UserPick = "Rock";
-  const [GameResult, SetGameResult] = useState("not started");
+  const [GameResult, SetGameResult] = useState("");
   const [ComputerPickState, SetComputerPickState] = useState("");
   const classes = useStyles();
 
@@ -101,9 +101,9 @@ export default function RockPaperScissors() {
           >
             Scissors
           </Button>
-          <div className={classes.Results}>{GameResult}</div>
-          {GameResult !== "not started" ? (
-            <div className={classes.Results}>
+          <div className={classes.GameResult}>{GameResult}</div>
+          {GameResult !== "" ? (
+            <div className={classes.ComputerResults}>
               Computer:{" "}
               {ComputerPickState === "Rock" ? (
                 <img src={RockImg} height={125} />
@@ -113,7 +113,9 @@ export default function RockPaperScissors() {
                 <img src={ScissorsImg} height={125} />
               ) : null}
             </div>
-          ) : null}
+          ) : (
+            <div className={classes.ComputerResults} />
+          )}
         </div>
       </div>
     </>
@@ -129,11 +131,21 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
   },
-  Results: {
+  GameResult: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     fontWeight: "bold",
+    fontSize: "30px",
+    height: "40px",
+  },
+  ComputerResults: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "bold",
+    fontSize: "30px",
+    height: "125px",
   },
   Button: {
     border: "1px solid",
