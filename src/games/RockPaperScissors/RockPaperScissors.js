@@ -78,6 +78,7 @@ export default function RockPaperScissors() {
       <div className={classes.Container}>
         <div className={classes.Game}>
           <Button
+            className={classes.Button}
             onClick={() => {
               UpdateGame("Rock");
             }}
@@ -85,6 +86,7 @@ export default function RockPaperScissors() {
             Rock
           </Button>
           <Button
+            className={classes.Button}
             onClick={() => {
               UpdateGame("Paper");
             }}
@@ -92,6 +94,7 @@ export default function RockPaperScissors() {
             Paper
           </Button>
           <Button
+            className={classes.Button}
             onClick={() => {
               UpdateGame("Scissors");
             }}
@@ -131,5 +134,9 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     fontWeight: "bold",
+  },
+  Button: {
+    border: "1px solid",
+    margin: "2.5px",
   },
 });
