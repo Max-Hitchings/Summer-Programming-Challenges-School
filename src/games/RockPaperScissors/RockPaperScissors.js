@@ -28,7 +28,7 @@ export default function RockPaperScissors() {
   //   }
   // }, [GameResult]);
 
-  const WinCase = () => {
+  const WinHandler = () => {
     SetGameResult("Won");
     console.log(GameScore, "win", GameScore.player + 1);
     SetGameScore({
@@ -37,7 +37,7 @@ export default function RockPaperScissors() {
     });
   };
 
-  const LoseCase = () => {
+  const LoseHandler = () => {
     SetGameResult("Lost");
     console.log(GameScore, "lose", GameScore.player + 1);
 
@@ -47,8 +47,14 @@ export default function RockPaperScissors() {
     });
   };
 
-  const DrawCase = () => {
+  const DrawHandler = () => {
     SetGameResult("Draw");
+  };
+
+  const ResetHandler = async () => {
+    SetGameScore({ player: parseInt(0), computer: parseInt(0) });
+    SetGameResult("");
+    await SetComputerPickState("");
   };
 
   const UpdateComputer = async () => {
@@ -79,24 +85,24 @@ export default function RockPaperScissors() {
 
   const FindWinner = () => {
     if (UserPick === ComputerPick) {
-      DrawCase();
+      DrawHandler();
     } else if (UserPick === "Rock") {
       if (ComputerPick === "Paper") {
-        LoseCase();
+        LoseHandler();
       } else {
-        WinCase();
+        WinHandler();
       }
     } else if (UserPick === "Paper") {
       if (ComputerPick === "Scissors") {
-        LoseCase();
+        LoseHandler();
       } else {
-        WinCase();
+        WinHandler();
       }
     } else if (UserPick === "Scissors") {
       if (ComputerPick === "Rock") {
-        LoseCase();
+        LoseHandler();
       } else if (ComputerPick === "Paper") {
-        WinCase();
+        WinHandler();
       }
     }
   };
@@ -115,45 +121,61 @@ export default function RockPaperScissors() {
           <div
             className={classes.GameScore}
           >{`${GameScore.player} - ${GameScore.computer}`}</div>
-          <Button
-            className={classes.Button}
-            onClick={() => {
-              UpdateGame("Rock");
-            }}
-          >
-            Rock
-          </Button>
-          <Button
-            className={classes.Button}
-            onClick={() => {
-              UpdateGame("Paper");
-            }}
-          >
-            Paper
-          </Button>
-          <Button
-            className={classes.Button}
-            onClick={() => {
-              UpdateGame("Scissors");
-            }}
-          >
-            Scissors
-          </Button>
+          <div>
+            <Button
+              className={classes.Button}
+              onClick={() => {
+                UpdateGame("Rock");
+              }}
+            >
+              Rock
+            </Button>
+            <Button
+              className={classes.Button}
+              onClick={() => {
+                UpdateGame("Paper");
+              }}
+            >
+              Paper
+            </Button>
+            <Button
+              className={classes.Button}
+              onClick={() => {
+                UpdateGame("Scissors");
+              }}
+            >
+              Scissors
+            </Button>
+          </div>
           <div className={classes.GameResult}>{GameResult}</div>
           {GameResult !== "" ? (
-            <div className={classes.ComputerResults}>
-              Computer:{" "}
-              {ComputerPickState === "Rock" ? (
-                <img src={RockImg} height={125} />
-              ) : ComputerPickState === "Paper" ? (
-                <img src={PaperImg} height={125} />
-              ) : ComputerPickState === "Scissors" ? (
-                <img src={ScissorsImg} height={125} />
-              ) : null}
-            </div>
+            <>
+              <div className={classes.ComputerResults}>
+                Computer:{" "}
+                {ComputerPickState === "Rock" ? (
+                  <img src={RockImg} height={125} />
+                ) : ComputerPickState === "Paper" ? (
+                  <img src={PaperImg} height={125} />
+                ) : ComputerPickState === "Scissors" ? (
+                  <img src={ScissorsImg} height={125} />
+                ) : null}
+              </div>
+              <Button
+                className={classes.ResetButton}
+                onClick={() => {
+                  ResetHandler();
+                }}
+              >
+                RESET
+              </Button>
+            </>
           ) : (
-            <div className={classes.ComputerResults} />
+            <>
+              <div className={classes.ComputerResults} />
+              <div className={classes.ResetButtonHolder} />
+            </>
           )}
+          {}
         </div>
       </div>
     </>
@@ -161,7 +183,7 @@ export default function RockPaperScissors() {
 }
 
 const useStyles = makeStyles({
-  Container: {
+  Game: {
     height: "100vh",
     backgroundColor: "rgb(58, 139, 139)",
     display: "flex",
@@ -198,4 +220,6 @@ const useStyles = makeStyles({
     border: "1px solid",
     margin: "2.5px",
   },
+  ResetButton: { border: "1px solid", backgroundColor: "#c73e3e" },
+  ResetButtonHolder: { height: "38px" },
 });
