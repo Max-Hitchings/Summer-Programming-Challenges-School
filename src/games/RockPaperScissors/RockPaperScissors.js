@@ -154,7 +154,6 @@ export default function RockPaperScissors() {
           ) : (
             <div className={classes.ComputerResults} />
           )}
-          {GameScore.player}
         </div>
       </div>
     </>
