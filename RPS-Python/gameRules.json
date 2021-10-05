@@ -1,0 +1,11 @@
+{
+  "rock": { "beats": "scissors", "loses": "paper" },
+  "paper": { "beats": "rock", "loses": "scissors" },
+  "scissors": { "beats": "paper", "loses": "rock" },
+  "comp": { "1": "rock", "2": "paper", "3": "scissors" },
+  "allowedPicks": {
+    "rock": ["rock", "Rock", "ROCK", "r", "R"],
+    "paper": ["paper", "Paper", "PAPER", "p", "P"],
+    "scissors": ["scissors", "Scissors", "SCISSORS", "s", "S"]
+  }
+}

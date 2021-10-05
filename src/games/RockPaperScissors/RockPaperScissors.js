@@ -18,16 +18,6 @@ export default function RockPaperScissors() {
   });
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   console.log(GameResult);
-  //   if (GameResult === "Won") {
-  //     SetGameScore({
-  //       player: GameResult.player + 1,
-  //       computer: GameResult.computer,
-  //     });
-  //   }
-  // }, [GameResult]);
-
   const WinHandler = () => {
     SetGameResult("Won");
     console.log(GameScore, "win", GameScore.player + 1);
@@ -124,6 +114,7 @@ export default function RockPaperScissors() {
           <div>
             <Button
               className={classes.Button}
+              id="test"
               onClick={() => {
                 UpdateGame("Rock");
               }}

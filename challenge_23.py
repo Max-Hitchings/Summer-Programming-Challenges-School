@@ -1,12 +1,11 @@
-import random
-
+import random, time
 
 main_map = []
 
 for x in range(10):
     main_map.append([])
     for i in range(10):
-        main_map[x].append([])
+        main_map[x].append(0)
 
 gold_row = random.randint(0,9)
 gold_column = random.randint(0,9)
@@ -24,12 +23,11 @@ def guess():
 
     return(main_map[new_guess_row][new_guess_column])
     
-
-print(main_map,gold_row,gold_column)
+print("hello welcome to treasure hunt!!\nMade by Max H\n\n")
 while True:
     guess_result = guess()
     if guess_result == 1:
         break
     else:
         print("WRONG try again")
-print("Well done you got it right!!!")
+print("Well done you found the gold!!!")
